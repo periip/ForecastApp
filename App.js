@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GOOGLE_KEY, APP_ID } from 'react-native-dotenv'
 import {
   Text,
   View,
@@ -42,10 +43,10 @@ export default function App() {
   const [longitude, setLongitude] = useState(-74.589912);
   const [location, setLocation] = useState('Randolph, NJ')
   
-  const geolocation = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputTown + ',+ ' + inputState + '&key=AIzaSyAD7o4VHbae6LGYk1s6RDqq7QGKPWsvZsY'
+  const geolocation = `https://maps.googleapis.com/maps/api/geocode/json?address=${inputTown},+${inputState}&key=${GOOGLE_KEY}`
 
   const weatherData =
-  'https://pro.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&exclude=minutely&appid=61b79ccd2f6d6f9efe9dcba4212dc141&units=imperial';
+  `https://pro.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${APP_ID}&units=imperial`;
 
   const getWeatherFromApiAsync = async () => {
     try {
